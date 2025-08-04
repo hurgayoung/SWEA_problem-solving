@@ -11,8 +11,11 @@ N개의 양의 정수에서 가장 큰 수와 가장 작은 수의 차이를 출
 
 T = int(input())
 
+# 1부터 T까지 순회
 for i in range(1, T+1):
     N = int(input())
+
+    # 주어지는 양수를 리스트로 변환
     ai= list(map(int, input().split()))
 
     max_num = ai[0]
@@ -26,8 +29,6 @@ for i in range(1, T+1):
             min_num = b
     
     c = max_num - min_num
-
-    
 
 
    # print('N:', N ,'리스트',ai)
