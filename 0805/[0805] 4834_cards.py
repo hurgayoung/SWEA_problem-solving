@@ -35,22 +35,3 @@ for i in range(1, T + 1):
 
 
     print(f"#{i} {max_card} {max_count}")
-
-
-
-
-
-
-def counting_sort(DATA, TEMP, k):
-
-    COUNTS = [0] * 10
-
-    for i in range(len(DATA)):
-        COUNTS[DATA[i]] += 1
-
-    for i in range(1, 10):
-        COUNTS[i] += COUNTS[i-1]
-
-    for i in range (len(DATA)-1, -1, -1):
-        COUNTS[DATA[i]] -= 1
-        TEMP[COUNTS[DATA[i]]] = DATA[i]
