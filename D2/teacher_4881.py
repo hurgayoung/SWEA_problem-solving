@@ -1,31 +1,34 @@
-# 4881 배열 최소 합
+T = int(input())  # 테스트 케이스 수 입력
 
-# NQueen, visite, 재귀함수설계 필요
-
-T = int(input())
-
+# 재귀 함수 정의
 def f(idx, sum):
-    # idx 현재 선택해야 하는 행의 index
-    # sum 직전까지 선택한 모든 수의 합
-    # 기저조건
-    if idx == N: # 행은 0, ... , N-1까지만 있음
-        return # 종료
+    """
+    idx : 현재 선택해야 하는 행 번호
+    sum : 지금까지 선택한 수들의 합
+    """
+    global min_sum  # 최소합을 갱신하기 위해 전역변수 사용
 
-    # 유도조건
-    # 열 번호: 0, ..., N-1
-    # 열 번호 중에서 하나를 선택 => 그 다음 행 선택하러 가기 f(idx+1) 호출
+    # 기저조건: 모든 행을 선택했으면 현재 합과 최소합 비교
+    if idx == N:
+        if sum < min_sum:
+            min_sum = sum  # 최소합 갱신
+        return
 
+    # 현재 행(idx)에서 열을 선택
+    for i in range(N):
+        if not visited[i]:  # 해당 열을 아직 선택하지 않았다면
+            visited[i] = True  # 선택 표시
+            f(idx + 1, sum + arr[idx][i])  # 다음 행 선택 재귀 호출
+            visited[i] = False  # 백트래킹: 선택 초기화
+
+# 각 테스트 케이스 처리
 for tc in range(1, T+1):
-    N = int(input())
-    arr = [list(map(int, input().split())) for _ in range(N)]
+    N = int(input())  # NxN 배열 크기 입력
+    arr = [list(map(int, input().split())) for _ in range(N)]  # 배열 입력
 
+    visited = [False] * N  # 각 열 선택 여부 표시
+    min_sum = float('inf')  # 최소합 초기화
 
-    # 재귀함수 설계하기
-    # 한 번에 모든 행의 숫자 선택 x
-    # 한 번에 한 행만 선택한 후, 나머지는 그 다음 함수 호출에 넘기기
+    f(0, 0)  # 0번째 행에서 숫자 선택 시작, 초기 합은 0
 
-    # 합을 구하는 문제
-    # 행에서 특정 숫자를 선택할 때마다 합이 누적됨
-    # 재귀 호출을 하면서 합을 누적해 나가는 것이 효율적
-
-    f(0, 0) # 0번 행에서 숫자 선택하기, 처음에는 합이 0으로 출발
+    print(f"#{tc} {min_sum}")  # 결과 출력

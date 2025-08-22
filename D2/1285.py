@@ -6,6 +6,9 @@ for tc in range(1, T+1):
     N = int(input())
     arr = map(int, input().split())
 
-    d = 0 # 던진 돌과 떨어진 거리 (distance)
     for i in arr:
-        abs(i)
+
+    # 절댓값으로 오름차순 정렬
+        print(sorted(abs(i)))
+
+    # 가장 첫번째 값과 던진 사람의 수(인원 수 구하기 편할 것 같음)
