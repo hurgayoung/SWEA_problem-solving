@@ -40,7 +40,7 @@ while c != str(N): # 조건은 떠오르면 쓰겠다
         a = str(0) + str(d) # '01'
         
     else: # N: 55 -> '55'
-        a = str()
+        a = str(d)
 
     b = int(a[0]) + int(a[1]) #10
 
