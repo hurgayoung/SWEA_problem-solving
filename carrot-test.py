@@ -10,24 +10,14 @@ arr = [
 
 # 위 1차원 리스트 중에서 순증가하는 것의 개수는?
 
-# for r in range(5):     # 행 나중 순회
-#     cnt = 0            # 순증가하는 리스트의 개수
-#     for c in range(3): # 열 우선 순회
-        
-#             cnt += 1   # 카운트 하나 올리기
-    
-#     print({cnt})
-
-
-
 ans = 0
-N = len(arr)
+
 for nums in arr:
-    print(nums)
-    cnt = 1
-    for i in range(len(nums) -1):
+    cnt = 1 # 기본 1
+    # 순증가 검사 
+    for i in range(len(nums)-1):
         if nums[i] < nums[i+1]:
             cnt += 1
-    if cnt == len(nums):
+    if cnt == len(nums): # cnt가 행의 길이와 같다면 = 모든 인접 쌍이 증가했다면 
         ans += 1
 print(ans)

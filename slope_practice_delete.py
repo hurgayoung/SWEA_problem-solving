@@ -36,11 +36,3 @@ def favorite_path(N, heights):
             start = i  # 새 구간 시작
 
     return best_len
-
-
-T = int(input())
-for tc in range(1, T+1):
-    N = int(input())
-    heights = list(map(int, input().split()))
-    ans = favorite_path(N, heights)
-    print(f"#{tc} {ans}")
